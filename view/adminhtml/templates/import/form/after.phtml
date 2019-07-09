@@ -1,0 +1,16 @@
+<a href="<?php echo $this->getSampleFileUrl(); ?>" target="_blank" id="sample-file-download" style="display:none;"></a>
+<script type="text/javascript">
+require(['jquery'], function($){
+  $(document).ready(function () {
+    $('#upload_button').click(function () {
+      if ($('#edit_form').valid()) {
+        alert("Validation pass");
+        return false;
+      }
+    });
+    $('#sample-file-link').click(function () {
+      $('#sample-file-download').click();
+    });
+  });
+});
+</script>
