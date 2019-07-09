@@ -1,0 +1,132 @@
+<a href="#" class="open-youtube-videos">
+  <span class="circle">
+    <span>►</span>
+  </span>
+  <span>VIDEO</span>
+</a>
+<div class="youtube-videos-popup">
+  <div class="youtube-videos">
+      <div>
+          <iframe width="542" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
+          </iframe>
+      </div>
+      <div>
+        <iframe width="542" height="315" src="https://www.youtube.com/embed/1J-k2YPCVpk">
+        </iframe>
+      </div>
+      <div>
+        <iframe width="542" height="315" src="https://www.youtube.com/embed/fYx3NiFGfl8">
+        </iframe>
+      </div>
+  </div>
+</div>
+<script>
+   require(
+       [
+           'jquery',
+           'Magento_Ui/js/modal/modal'
+       ],
+       function (
+           $,
+           modal
+       ) {
+           var modaloptions = {
+               type: 'popup',
+               modalClass: 'youtube-videos-modal-popup',
+               responsive: false,
+               innerScroll: false,
+               clickableOverlay: true,
+               title: '<?php echo $this->getProductName(); ?>',
+               buttons: []
+           };
+           var callforoption = modal(modaloptions, $('.youtube-videos-popup'));
+           $('.open-youtube-videos').click(function(){
+              $('.youtube-videos-popup').modal('openModal');
+           })
+       }
+   );
+</script>
+<script>
+    require([
+        'jquery',
+        'slick'
+    ], function ($) {
+        jQuery(document).ready(function () {
+            jQuery(".youtube-videos").slick({
+                dots: false,
+                infinite: false,
+                speed: 300,
+                slidesToShow: 1,
+                slidesToScroll: 1
+            });
+        });
+    });
+</script>
+<style type="text/css">
+  .open-youtube-videos .circle {
+  	background-color: #CC181E;
+  	padding: 12px;
+  	text-align: center;
+  	display: inline-block;
+  	border-radius: 20px;
+  	color: white;
+  	font-size: 18px;
+  	width: 15px;
+  	height: 15px;
+  	line-height: 10px;
+  }
+  .open-youtube-videos {
+  	display: inline-block;
+  	text-align: center;
+  }
+  .youtube-videos-popup iframe{
+
+  }
+  .slick-prev {
+  	background-image: url(<?php echo $this->getViewFileUrl('mage/gallery/gallery.png'); ?>) !important;
+  	left: -40px;
+  	width: 50px;
+  	height: 50px;
+  	z-index: 100;
+  	background-position: -100px 306px !important;
+  	border: unset !important;
+  	box-shadow: unset !important;
+  }
+  .slick-prev::before {
+  	content: unset;
+  }
+  .slick-next {
+  	background-image: url(<?php echo $this->getViewFileUrl('mage/gallery/gallery.png'); ?>) !important;
+  	right: -40px;
+  	width: 50px;
+  	height: 50px;
+  	z-index: 100;
+  	background-position: -172px 306px !important;
+  	border: unset !important;
+  	box-shadow: unset !important;
+  }
+  .slick-next::before {
+  	content: unset;
+  }
+  .youtube-videos-modal-popup .modal-inner-wrap {
+    width: 646px;
+  }
+  .modal-popup.youtube-videos-modal-popup .modal-content{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .open-youtube-videos span {
+  	display: block;
+  }
+  .modal-popup.youtube-videos-modal-popup .modal-header {
+  	padding-bottom: 20px;
+  	padding-top: 20px;
+  	padding-left: 20px;
+  	padding-right: 20px;
+  }
+  .modal-popup.youtube-videos-modal-popup .slick-prev.slick-arrow.slick-disabled, .modal-popup.youtube-videos-modal-popup .slick-next.slick-arrow.slick-disabled {
+  	cursor: initial;
+  	opacity: 0.3;
+  	filter: alpha(opacity=30);
+  }
+</style>
