@@ -1,3 +1,6 @@
+<?php
+  $videos = $this->getYoutubeVideos();
+?>
 <a href="#" class="open-youtube-videos">
   <span class="circle">
     <span>►</span>
@@ -5,20 +8,18 @@
   <span>VIDEO</span>
 </a>
 <div class="youtube-videos-popup">
-  <div class="youtube-videos">
-      <div>
-          <iframe width="542" height="315" src="https://www.youtube.com/embed/tgbNymZ7vqY">
-          </iframe>
-      </div>
-      <div>
-        <iframe width="542" height="315" src="https://www.youtube.com/embed/1J-k2YPCVpk">
-        </iframe>
-      </div>
-      <div>
-        <iframe width="542" height="315" src="https://www.youtube.com/embed/fYx3NiFGfl8">
-        </iframe>
-      </div>
-  </div>
+    <div class="youtube-videos">
+        <?php
+            foreach ($videos as $video ) {
+                ?>
+                  <div>
+                      <iframe width="542" height="315" src="<?= $video ?>">
+                      </iframe>
+                  </div>
+                <?php
+            }
+        ?>
+    </div>
 </div>
 <script>
    require(
@@ -128,5 +129,23 @@
   	cursor: initial;
   	opacity: 0.3;
   	filter: alpha(opacity=30);
+  }
+  @media screen and (max-width: 646px) {
+    .youtube-videos-modal-popup .modal-inner-wrap {
+    	width: 450px;
+    }
+    .youtube-videos-popup iframe {
+    	width: 348px;
+    	height: 198px;
+    }
+  }
+  @media screen and (max-width: 450px) {
+    .youtube-videos-modal-popup .modal-inner-wrap {
+    	width: 320px;
+    }
+    .youtube-videos-popup iframe {
+    	width: 216px;
+    	height: 140px;
+    }
   }
 </style>
