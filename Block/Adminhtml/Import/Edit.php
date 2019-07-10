@@ -15,10 +15,16 @@ class Edit extends \Magento\Backend\Block\Widget\Form\Container
 
         $this->buttonList->remove('back');
         $this->buttonList->remove('reset');
-        $this->buttonList->update('save', 'label', __('Check Data'));
+        $this->buttonList->update('save', 'label', __('Upload'));
         $this->buttonList->update('save', 'id', 'upload_button');
-        $this->buttonList->update('save', 'onclick', 'varienImport.postToFrame();');
-        $this->buttonList->update('save', 'data_attribute', '');
+        $this->buttonList->add(
+            'import',
+            [
+                'label' => __('Import'),
+                'id'    => 'import-button',
+                'class' => 'no-display'
+            ]
+        );
 
         $this->_objectId = 'import_id';
         $this->_blockGroup = 'Godogi_YoutubeVideoPopUp';

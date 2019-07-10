@@ -58,8 +58,8 @@ class YoutubePopUp extends \Magento\Catalog\Block\Product\View
   {
     $youtubeVideos = [];
     for($i = 1; $i <= 10; $i++){
-      if (null !== $product->getCustomAttribute('video_' . $i)) {
-         $youtubeVideos[] = $product->getCustomAttribute('video_' . $i)->getValue();
+      if (null !== $this->getProduct()->getCustomAttribute('video_' . $i)) {
+         $youtubeVideos[] = $this->getProduct()->getCustomAttribute('video_' . $i)->getValue();
       }
     }
     return $youtubeVideos;
