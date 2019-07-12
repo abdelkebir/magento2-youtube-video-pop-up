@@ -63,7 +63,13 @@ class YoutubePopUp extends \Magento\Catalog\Block\Product\View
               if (strpos($videoUrl->getValue(), 'https://www.youtube.com/embed/') !== false) {
                 $youtubeVideos[] = $videoUrl->getValue();
               }else{
-                $videoUrl = str_replace('https://www.youtube.com/watch?v=', '', $videoUrl->getValue());
+                $videoUrl = $videoUrl->getValue();
+                if (strpos($videoUrl, 'https://www.youtube.com/watch?v=') !== false) {
+                  $videoUrl = str_replace('https://www.youtube.com/watch?v=', '', $videoUrl);
+                }
+                if (strpos($videoUrl, 'https://youtu.be/') !== false) {
+                  $videoUrl = str_replace('https://youtu.be/', '', $videoUrl);
+                }
                 $videoUrl = 'https://www.youtube.com/embed/' . $videoUrl;
                 $youtubeVideos[] = $videoUrl;
               }
