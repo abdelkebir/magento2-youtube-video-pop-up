@@ -57,21 +57,22 @@ class YoutubePopUp extends \Magento\Catalog\Block\Product\View
   public function getYoutubeVideos()
   {
       $youtubeVideos = [];
-      for($i = 1; $i <= 10; $i++){
-          $videoUrl = $this->getProduct()->getCustomAttribute('video_' . $i);
-          if (null !== $videoUrl) {
-              if (strpos($videoUrl->getValue(), 'https://www.youtube.com/embed/') !== false) {
-                $youtubeVideos[] = $videoUrl->getValue();
+      $videoUrls = $this->getProduct()->getCustomAttribute('video_1');
+      if (null !== $videoUrls) {
+          $videoUrls = explode(',',$videoUrls->getValue());
+
+          foreach($videoUrls as $videoUrl){
+              if (strpos($videoUrl, 'https://www.youtube.com/embed/') !== false) {
+                  $youtubeVideos[] = $videoUrl;
               }else{
-                $videoUrl = $videoUrl->getValue();
-                if (strpos($videoUrl, 'https://www.youtube.com/watch?v=') !== false) {
-                  $videoUrl = str_replace('https://www.youtube.com/watch?v=', '', $videoUrl);
-                }
-                if (strpos($videoUrl, 'https://youtu.be/') !== false) {
-                  $videoUrl = str_replace('https://youtu.be/', '', $videoUrl);
-                }
-                $videoUrl = 'https://www.youtube.com/embed/' . $videoUrl;
-                $youtubeVideos[] = $videoUrl;
+                  if (strpos($videoUrl, 'https://www.youtube.com/watch?v=') !== false) {
+                      $videoUrl = str_replace('https://www.youtube.com/watch?v=', '', $videoUrl);
+                  }
+                  if (strpos($videoUrl, 'https://youtu.be/') !== false) {
+                      $videoUrl = str_replace('https://youtu.be/', '', $videoUrl);
+                  }
+                  $videoUrl = 'https://www.youtube.com/embed/' . $videoUrl;
+                  $youtubeVideos[] = $videoUrl;
               }
           }
       }
