@@ -7,13 +7,14 @@
       </span>
       <span>VIDEO</span>
     </a>
-    <div class="youtube-videos-popup">
+    <div id="youtube-videos-popup">
         <div class="youtube-videos">
             <?php
                 foreach ($videos as $video ) {
                     ?>
-                      <div>
-                          <iframe width="542" height="315" src="<?= $video ?>">
+                      <div class="youtube-video-div">
+                          <input type="hidden" value="<?= $video ?>"/>
+                          <iframe width="542" height="315" src="<?= $video ?>" allowfullscreen="true">
                           </iframe>
                       </div>
                     <?php
@@ -40,10 +41,19 @@
                    title: '<?php echo $this->getProductName(); ?>',
                    buttons: []
                };
-               var callforoption = modal(modaloptions, $('.youtube-videos-popup'));
+               var callforoption = modal(modaloptions, $('#youtube-videos-popup'));
                $('.open-youtube-videos').click(function(){
-                  $('.youtube-videos-popup').modal('openModal');
-               })
+                  $('#youtube-videos-popup').modal('openModal');
+               });
+               $('#youtube-videos-popup').modal('openModal').on('modalclosed', function() {
+                  $('.youtube-video-div').each
+                  $('.youtube-video-div').each(function( index ) {
+                      var currentElement = $(this);
+                      currentElement.find('iframe').first().attr("src","https://www.youtube.com");
+                      var youtubeUrl = currentElement.find('input').first().val();
+                      currentElement.find('iframe').first().attr("src", youtubeUrl);
+                  });
+               });
            }
        );
     </script>
