@@ -3,7 +3,7 @@
     ?>
     <a href="#" class="open-youtube-videos">
       <span class="circle">
-        <span>►</span>
+        <img src='<?php echo $this->getViewFileUrl('Godogi_YoutubeVideoPopUp::images/video-icon.png'); ?>' alt="Play Video" width="60" height="60">
       </span>
       <span>VIDEO</span>
     </a>
@@ -45,7 +45,7 @@
                $('.open-youtube-videos').click(function(){
                   $('#youtube-videos-popup').modal('openModal');
                });
-               $('#youtube-videos-popup').modal('openModal').on('modalclosed', function() {
+               $('#youtube-videos-popup').on('modalclosed', function() {
                   $('.youtube-video-div').each
                   $('.youtube-video-div').each(function( index ) {
                       var currentElement = $(this);
@@ -75,20 +75,14 @@
     </script>
     <style type="text/css">
       .open-youtube-videos .circle {
-      	background-color: #CC181E;
-      	padding: 12px;
-      	text-align: center;
-      	display: inline-block;
-      	border-radius: 20px;
-      	color: white;
-      	font-size: 18px;
-      	width: 15px;
-      	height: 15px;
-      	line-height: 10px;
+        text-align: center;
+        display: inline-block;
+        line-height: 10px;
       }
       .open-youtube-videos {
       	display: inline-block;
       	text-align: center;
+      	margin-left: calc(88px + 4%);
       }
       .youtube-videos-popup iframe{
 
@@ -139,6 +133,12 @@
       	cursor: initial;
       	opacity: 0.3;
       	filter: alpha(opacity=30);
+      }
+      @media screen and (max-width: 767px) {
+        .open-youtube-videos {
+        	margin-left: 0px;
+        	margin-bottom: 20px;
+        }
       }
       @media screen and (max-width: 646px) {
         .youtube-videos-modal-popup .modal-inner-wrap {
