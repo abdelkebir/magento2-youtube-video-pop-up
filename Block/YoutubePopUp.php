@@ -78,4 +78,12 @@ class YoutubePopUp extends \Magento\Catalog\Block\Product\View
       }
       return $youtubeVideos;
   }
+  public function getPdfLinks(){
+    $pdfLinks = [];
+    $pdfLinksAttr = $this->getProduct()->getCustomAttribute('instructions_pdf');
+    if (null !== $pdfLinksAttr) {
+        $pdfLinks = explode(',',$pdfLinksAttr->getValue());
+    }
+    return $pdfLinks;
+  }
 }
