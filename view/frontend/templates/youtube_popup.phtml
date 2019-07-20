@@ -120,8 +120,10 @@ if($videos = $this->getYoutubeVideos() || $pdfs = $this->getPdfLinks()){ ?>
 
     }
     .open-youtube-video {
-      display: inline-block;
-      margin-right: 10px;
+    	display: inline-block;
+    	margin-right: 10px;
+    	width: 86px;
+      margin-bottom: 15px;
     }
     .slick-prev {
       background-image: url(<?php echo $this->getViewFileUrl('mage/gallery/gallery.png'); ?>) !important;
@@ -156,8 +158,10 @@ if($videos = $this->getYoutubeVideos() || $pdfs = $this->getPdfLinks()){ ?>
       display: block;
     }
     .open-pdf-link {
-      display: inline-block;
-      margin-right: 10px;
+    	display: inline-block;
+    	margin-right: 10px;
+      margin-bottom: 15px;
+    	width: 86px;
     }
     .modal-popup.youtube-video-modal-popup .slick-prev.slick-arrow.slick-disabled, .modal-popup.youtube-video-modal-popup .slick-next.slick-arrow.slick-disabled {
       cursor: initial;
